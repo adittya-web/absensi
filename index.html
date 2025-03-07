@@ -14,20 +14,24 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            animation: fadeIn 1s ease-in;
         }
         .container {
-            max-width: 400px;
+            max-width: 90%;
+            width: 400px;
             background: white;
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             text-align: center;
+            animation: slideUp 0.5s ease-in-out;
         }
         h2 {
             color: #333;
+            animation: fadeIn 1.5s ease-in;
         }
         input, select {
-            width: 80%;
+            width: 90%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
@@ -43,15 +47,25 @@
             border-radius: 5px;
             font-size: 16px;
             width: 100%;
+            transition: background 0.3s, transform 0.2s;
         }
         button:hover {
             background-color: #218838;
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Absensi Guru</h2>
+        <h2>Absensi Guru Pesantren</h2>
         <label for="nama">Nama Guru:</label>
         <input type="text" id="nama" placeholder="Masukkan nama guru">
         
