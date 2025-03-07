@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi Guru</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        input, select {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Absensi Guru</h2>
+        <label for="nama">Nama Guru:</label>
+        <input type="text" id="nama" placeholder="Masukkan nama guru">
+        
+        <label for="pengawas">Pengawas Dari:</label>
+        <select id="pengawas">
+            <option value="">-- Pilih Jenjang --</option>
+            <option value="SD">SD</option>
+            <option value="SMP">SMP</option>
+        </select>
+        
+        <button onclick="kirimKeWA()">Kirim Absensi</button>
+    </div>
+    <script>
+        function kirimKeWA() {
+            let nama = document.getElementById("nama").value;
+            let pengawas = document.getElementById("pengawas").value;
+            
+            if (nama === "" || pengawas === "") {
+                alert("Silakan isi semua data!");
+                return;
+            }
+            
+            let waktu = new Date().toLocaleString("id-ID");
+            let pesan = `Nama: ${nama}%0APengawas Dari: ${pengawas}%0AWaktu: ${waktu}`;
+            let nomorWA = "6283182117492"; // Ganti dengan nomor WhatsApp tujuan
+            let url = `https://api.whatsapp.com/send?phone=${nomorWA}&text=${pesan}`;
+            
+            window.location.href = url;
+            
+            document.getElementById("nama").value = "";
+            document.getElementById("pengawas").value = "";
+        }
+    </script>
+</body>
+</html>
